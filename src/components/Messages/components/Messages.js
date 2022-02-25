@@ -45,6 +45,8 @@ function Messages() {
     socket.on("bot-message", (message) => {
       setBotTyping(false);
 
+      playReceive();
+
       setMessages([...messages, { message, user: BOT, id: Date.now() }]);
 
       setLatestMessage(BOT, message);
@@ -67,6 +69,8 @@ function Messages() {
     setLatestMessage(ME, message);
 
     setMessage("");
+
+    playSend();
 
     document.getElementById("user-message-input").value = "";
   };
